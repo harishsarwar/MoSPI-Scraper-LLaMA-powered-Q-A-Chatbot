@@ -1,0 +1,21 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>MoSPI RAG Chat (Web UI)</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>MoSPI RAG Chat (FastAPI UI)</h1>
+      <p>Answers are returned only from the indexed documents. If not found, the model will say so.</p>
+    </header>
+    {% block content %}{% endblock %}
+    <footer>
+      <small>RAG system — Embeddings: HuggingFace SentenceTransformers; LLM: Groq</small>
+    </footer>
+  </div>
+</body>
+</html>

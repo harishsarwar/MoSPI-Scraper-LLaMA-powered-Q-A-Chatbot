@@ -1,0 +1,30 @@
+
+version: "3.8"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.api
+    environment:
+      - PROCESSED_DIR=/app/data/processed
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_MODEL=${GROQ_MODEL}
+      - GROQ_API_URL=${GROQ_API_URL}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+
+  webui:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.webui
+    environment:
+      - API_URL=http://api:8000
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./webui:/app/webui
+      - ./data:/app/data
+    depends_on:
+      - api

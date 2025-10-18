@@ -1,0 +1,31 @@
+
+{% extends "layout.html" %}
+{% block content %}
+  <main>
+    <form method="post" action="/ask">
+      <label for="question">Question:</label><br/>
+      <textarea id="question" name="question" rows="6" cols="100">{{ question or "" }}</textarea><br/><br/>
+      <label for="k">k (retrieved chunks):</label>
+      <input id="k" name="k" type="number" min="1" max="20" value="5" /><br/>
+      <label for="temperature">temperature (0.0 - 1.0):</label>
+      <input id="temperature" name="temperature" type="number" min="0" max="1" step="0.1" value="0.0" /><br/><br/>
+      <button type="submit">Ask</button>
+    </form>
+
+    {% if answer %}
+      <section class="answer">
+        <h2>Answer</h2>
+        <div>{{ answer | safe }}</div>
+      </section>
+
+      <section class="citations">
+        <h3>Citations</h3>
+        <ul>
+          {% for c in citations %}
+            <li><a href="{{ c.url }}" target="_blank">{{ c.title }}</a> — {{ c.url }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+  </main>
+{% endblock %}
