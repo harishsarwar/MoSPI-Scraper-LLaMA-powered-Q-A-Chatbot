@@ -9,8 +9,12 @@ This repository contains an end-to-end solution for the assignment:
 - SQLite used for metadata storage (data/processed/mospi.db)
 - Dockerfiles and docker-compose for reproducible runs
 
-# for run this code must have docker.
- - command: docker-compose up--build
+# for run this code 
+    1. must have docker.
+            - command: 
+                    docker-compose up--build
+    2. set the creadentials of groq for llm
+
 
 
 # Overview of this project:
@@ -23,7 +27,7 @@ Beautifulsoup
 faiss
 huggingface_vector_embedding_mode.
 groq_llm
-html for frotend
+html and css for frotend
 fastapi for backend
 docker
 etc.
